@@ -45,7 +45,7 @@ function Countdown({ targetDate }) {
     return (
         <div className={finished ? "container_finished" : "container"}>
             {/* <p className="head">PLACEHOLDER</p> */}
-            {finished ? <p className="head_finished">ПРИВЕЕЕЕЕЕТ</p> : <p className="head">До прибытия осталось:</p>}
+            {finished ? <p className="head_finished">ПРИВЕЕЕЕЕЕТ</p> : <p className="head">До возвращения бобсоеда:</p>}
             {!finished &&
                 <div className="time">
                     <span style={timeLeft.days == 0 ? { opacity: opacity } : {}}>{timeLeft.days}:</span>
