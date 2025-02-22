@@ -4,12 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 import Countdown from './Countdown';
 
 function App() {
-    const [color, setColor] = useState([40, 40, 40]);
+    const randomColor = () => Math.floor(Math.random() * 254)
+
+    const [color, setColor] = useState([randomColor(), randomColor(), randomColor()]);
     const colorRef = useRef(color)
     const speed = 10
     const interval = 1000
     const [delta, setDelta] = useState([speed, speed, speed]);
     const deltaRef = useRef(delta)
+
+
 
     useEffect(() => {
         const animation = setInterval(() => {
@@ -38,7 +42,7 @@ function App() {
         <div className="App" style={{ backgroundColor: `rgb(${colorRef.current[0]},${colorRef.current[1]},${colorRef.current[2]})`, transition: `all ease-in ${interval / 1000}s` }}>
             <div className="overlay"></div>
             <header className="App-header">
-                <Countdown targetDate="2025-02-23T00:03:00Z" />
+                <Countdown targetDate="2025-02-23T00:00:00Z" />
             </header>
         </div>
     );

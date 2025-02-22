@@ -22,6 +22,23 @@ function Countdown({ targetDate }) {
 
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
     const [finished, setFinished] = useState(false);
+    const [punch, setPunch] = useState(false);
+    useEffect(() => {
+        if (finished) {
+
+            setInterval(() => {
+                setPunch(true)
+            }, 2000);
+        }
+    }, [finished]);
+    const finishedDiv = () => {
+
+        return (
+            <div className="finishedDiv">
+                <p className="head_finished">Ну все. А что ты ожидала тут увидеть?</p>
+                <p className="head_finished" style={punch ? { fontSize: "48px" } : { fontSize: "48px", opacity: 0 }}>ШУТКААА С ПРИЕЗДОМ СОЛНЫШКО!!!</p>
+            </div>)
+    }
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -45,7 +62,7 @@ function Countdown({ targetDate }) {
     return (
         <div className={finished ? "container_finished" : "container"}>
             {/* <p className="head">PLACEHOLDER</p> */}
-            {finished ? <p className="head_finished">ПРИВЕЕЕЕЕЕТ</p> : <p className="head">До возвращения бобсоеда:</p>}
+            {finished ? finishedDiv() : <p className="head">До возвращения бобсоеда:</p>}
             {!finished &&
                 <div className="time">
                     <span style={timeLeft.days == 0 ? { opacity: opacity } : {}}>{timeLeft.days}:</span>
